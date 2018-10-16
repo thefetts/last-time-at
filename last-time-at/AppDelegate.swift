@@ -4,15 +4,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ViewController()
-        window?.makeKeyAndVisible()
 
-        let entryStore = EntryStore()
-        let tableViewController = window!.rootViewController as! ViewController
-        tableViewController.entryStore = entryStore
+        if let w = window {
+            let mainVC = ViewController()
+            let navController = UINavigationController(rootViewController: mainVC)
+            w.rootViewController = navController
+
+            let entryStore = EntryStore()
+            mainVC.entryStore = entryStore
+
+            w.makeKeyAndVisible()
+        }
 
         return true
     }

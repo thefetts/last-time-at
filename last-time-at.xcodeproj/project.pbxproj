@@ -97,6 +97,11 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = example;
+				TargetAttributes = {
+					3CFF2EA780DEDAC0D0EDDDC4 = {
+						DevelopmentTeam = H6S25Q987W;
+					};
+				};
 			};
 			buildConfigurationList = 3CFF2C8A0345580BE730175C /* Build configuration list for PBXProject "last-time-at" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -220,6 +225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H6S25Q987W;
 				INFOPLIST_FILE = "last-time-at/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "example.last-time-at";
@@ -233,6 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H6S25Q987W;
 				INFOPLIST_FILE = "last-time-at/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "example.last-time-at";
