@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UIGestureRecognizerDelegate {
     var entryStore: EntryStore!
 
     override func viewDidLoad() {
@@ -18,6 +18,12 @@ class ViewController: UITableViewController {
 
         cell.textLabel?.text = entry.title
         cell.detailTextLabel?.text = "\(entry.rating)/5"
+
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.delegate = self
+        tapRecognizer.addTarget(self, action: #selector(touchUpInside))
+        cell.addGestureRecognizer(tapRecognizer)
+
         return cell
     }
 
@@ -42,5 +48,16 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         entryStore.moveEntry(from: sourceIndexPath.row, to: destinationIndexPath.row)
         tableView.reloadData()
+    }
+
+    @objc
+    func touchUpInside(sender: UITapGestureRecognizer) {
+        let cell = sender.view as! UITableViewCell
+        if let row = tableView.indexPath(for: cell)?.row {
+            let detailViewController = DetailViewController()
+            let entry = entryStore.entries[row]
+            detailViewController.entry = entry
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 }
