@@ -11,4 +11,14 @@ class EntryStore {
             entries.remove(at: index)
         }
     }
+
+    func moveEntry(from: Int, to: Int) {
+        if (from == to) {
+            return
+        }
+
+        let movedEntry = entries[from]
+        entries.remove(at: from)
+        entries.insert(movedEntry, at: to)
+    }
 }

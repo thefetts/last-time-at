@@ -6,7 +6,6 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "EntryCell")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -14,10 +13,11 @@ class ViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EntryCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EntryCell") ?? UITableViewCell(style: .value1, reuseIdentifier: "EntryCell")
         let entry = entryStore.entries[indexPath.row]
 
         cell.textLabel?.text = entry.title
+        cell.detailTextLabel?.text = "\(entry.rating)/5"
         return cell
     }
 
@@ -37,5 +37,10 @@ class ViewController: UITableViewController {
 
             present(ac, animated: true, completion: nil)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        entryStore.moveEntry(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        tableView.reloadData()
     }
 }
