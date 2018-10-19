@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         if let w = window {
-            let mainVC = ViewController()
+            let mainVC = EntryListViewController()
             let navController = UINavigationController(rootViewController: mainVC)
             w.rootViewController = navController
 

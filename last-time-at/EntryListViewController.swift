@@ -1,11 +1,17 @@
 import UIKit
 
-class ViewController: UITableViewController, UIGestureRecognizerDelegate {
+class EntryListViewController: UITableViewController, UIGestureRecognizerDelegate {
     var entryStore: EntryStore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 65
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -17,7 +23,7 @@ class ViewController: UITableViewController, UIGestureRecognizerDelegate {
         let entry = entryStore.entries[indexPath.row]
 
         cell.textLabel?.text = entry.title
-        cell.detailTextLabel?.text = "\(entry.rating)/5"
+        cell.detailTextLabel?.text = "⭐️" * entry.rating
 
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.delegate = self
@@ -54,7 +60,7 @@ class ViewController: UITableViewController, UIGestureRecognizerDelegate {
     func touchUpInside(sender: UITapGestureRecognizer) {
         let cell = sender.view as! UITableViewCell
         if let row = tableView.indexPath(for: cell)?.row {
-            let detailViewController = DetailViewController()
+            let detailViewController = EntryDetailViewController()
             let entry = entryStore.entries[row]
             detailViewController.entry = entry
             navigationController?.pushViewController(detailViewController, animated: true)
