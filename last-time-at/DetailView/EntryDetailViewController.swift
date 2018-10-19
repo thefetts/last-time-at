@@ -17,7 +17,7 @@ class EntryDetailViewController: UITableViewController {
             SaveButtonCell(delegate: self)
         ]
 
-        let tapGR = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        let tapGR = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
     }

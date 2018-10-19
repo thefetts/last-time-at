@@ -1,6 +1,14 @@
 import UIKit
 import SnapKit
 
+postfix operator ⭐
+
+extension Int {
+    postfix static func ⭐(this: Int) -> String {
+        return "⭐️" * this
+    }
+}
+
 extension String {
     static func *(input: String, times: Int) -> String {
         var result = ""

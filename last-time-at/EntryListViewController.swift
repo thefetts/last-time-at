@@ -23,7 +23,7 @@ class EntryListViewController: UITableViewController, UIGestureRecognizerDelegat
         let entry = entryStore.entries[indexPath.row]
 
         cell.textLabel?.text = entry.title
-        cell.detailTextLabel?.text = "⭐️" * entry.rating
+        cell.detailTextLabel?.text = entry.rating⭐
 
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.delegate = self
