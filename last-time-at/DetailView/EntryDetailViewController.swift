@@ -1,6 +1,6 @@
 import UIKit
 
-class EntryDetailViewController: UITableViewController, UIPickerViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate {
+class EntryDetailViewController: UITableViewController {
     var cells: [UITableViewCell]!
     var entry: Entry!
     let ratings = [5, 4, 3, 2, 1]
@@ -22,41 +22,11 @@ class EntryDetailViewController: UITableViewController, UIPickerViewDelegate, UI
         self.view.addGestureRecognizer(tapGR)
     }
 
-
-    // MARK: UITableViewController
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cells[indexPath.row]
-    }
-
-
-    // MARK: UITextFieldDelegate
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        entry.title = textField.text ?? ""
-    }
-
-
-    // MARK: UIGestureRecognizerDelegate
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        navigationController?.popViewController(animated: true)
-        print("entry title: \(entry.title)")
-        return true
-    }
-
-
-    // MARK: UIPickerViewDelegate
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "⭐️" * ratings[row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        entry.rating = ratings[row]
     }
 }
