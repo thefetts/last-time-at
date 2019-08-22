@@ -7,7 +7,7 @@ class EntryStore {
     }
 
     func removeEntry(_ entry: Entry) {
-        if let index = entries.index(of: entry) {
+        if let index = entries.firstIndex(of: entry) {
             entries.remove(at: index)
         }
     }
