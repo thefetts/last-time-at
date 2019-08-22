@@ -25,12 +25,14 @@ class EntryListViewController: UITableViewController, UIGestureRecognizerDelegat
         cell.textLabel?.text = entry.title
         cell.detailTextLabel?.text = entry.rating⭐
 
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.delegate = self
-        tapRecognizer.addTarget(self, action: #selector(touchUpInside))
-        cell.addGestureRecognizer(tapRecognizer)
-
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let entry = entryStore.entries[indexPath.row]
+        let detailViewController = EntryDetailViewController(entry: entry, row: indexPath.row)
+        detailViewController.delegate = self
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -54,17 +56,6 @@ class EntryListViewController: UITableViewController, UIGestureRecognizerDelegat
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         entryStore.moveEntry(from: sourceIndexPath.row, to: destinationIndexPath.row)
         tableView.reloadData()
-    }
-
-    @objc
-    func touchUpInside(sender: UITapGestureRecognizer) {
-        let cell = sender.view as! UITableViewCell
-        if let row = tableView.indexPath(for: cell)?.row {
-            let entry = entryStore.entries[row]
-            let detailViewController = EntryDetailViewController(entry: entry, row: row)
-            detailViewController.delegate = self
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
     }
 }
 
