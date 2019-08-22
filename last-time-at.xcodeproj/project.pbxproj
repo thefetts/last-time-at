@@ -14,12 +14,11 @@
 		3CFF22F0C5ABB8744367DFF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF2FA45F7F347F14A85D80 /* AppDelegate.swift */; };
 		3CFF262BA629AE7C22F9DA6A /* RatingFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF24D31F9A41AD15561FA0 /* RatingFieldCell.swift */; };
 		3CFF283462BAD8158955A6BE /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF26111AA088B301F93203 /* EntryDetailViewController.swift */; };
-		3CFF2A01632DCCB9BA66CC7A /* EntryDetailTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF28C62C2BD6007B342E92 /* EntryDetailTextFieldDelegate.swift */; };
 		3CFF2A9836FFB759F7D824C2 /* TitleFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF20CE30A0D3E670D584E8 /* TitleFieldCell.swift */; };
-		3CFF2ADE52C70FD839667EF4 /* EntryDetailPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF2E5B42E66E559B5244FD /* EntryDetailPickerDelegate.swift */; };
 		3CFF2BA5495C42006C55CFAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CFF2C8BC2406C27AFEC7291 /* Assets.xcassets */; };
-		3CFF2DCD972F0067B37CBB9E /* EntryDetailGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFF27BC235E8BFEBCB3B4A9 /* EntryDetailGestureRecognizerDelegate.swift */; };
 		8263ED0C2178D22F00501FA4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8263ED0B2178D22F00501FA4 /* SnapKit.framework */; };
+		828BD206230EC99300FA66C7 /* Int+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828BD205230EC99300FA66C7 /* Int+extensions.swift */; };
+		828BD208230EC9A500FA66C7 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828BD207230EC9A500FA66C7 /* String+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,15 +28,14 @@
 		3CFF24D31F9A41AD15561FA0 /* RatingFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingFieldCell.swift; sourceTree = "<group>"; };
 		3CFF26111AA088B301F93203 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		3CFF261729BBDA1DD0311881 /* SaveButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveButtonCell.swift; sourceTree = "<group>"; };
-		3CFF27BC235E8BFEBCB3B4A9 /* EntryDetailGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailGestureRecognizerDelegate.swift; sourceTree = "<group>"; };
-		3CFF28C62C2BD6007B342E92 /* EntryDetailTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailTextFieldDelegate.swift; sourceTree = "<group>"; };
 		3CFF28F5AF647021CEA9652B /* last-time-at.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "last-time-at.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFF29033F8705C1E55E719D /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		3CFF2ACAB155B7D69484AC64 /* EntryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryStore.swift; sourceTree = "<group>"; };
 		3CFF2C8BC2406C27AFEC7291 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3CFF2E5B42E66E559B5244FD /* EntryDetailPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailPickerDelegate.swift; sourceTree = "<group>"; };
 		3CFF2FA45F7F347F14A85D80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8263ED0B2178D22F00501FA4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = SOURCE_ROOT; };
+		828BD205230EC99300FA66C7 /* Int+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extensions.swift"; sourceTree = "<group>"; };
+		828BD207230EC9A500FA66C7 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +68,7 @@
 				3CFF2ACAB155B7D69484AC64 /* EntryStore.swift */,
 				3CFF29033F8705C1E55E719D /* Entry.swift */,
 				8263ED0B2178D22F00501FA4 /* SnapKit.framework */,
+				828BD204230EC97000FA66C7 /* extensions */,
 				3CFF291464226A57EF19541C /* DetailView */,
 			);
 			path = "last-time-at";
@@ -82,9 +81,6 @@
 				3CFF24D31F9A41AD15561FA0 /* RatingFieldCell.swift */,
 				3CFF261729BBDA1DD0311881 /* SaveButtonCell.swift */,
 				3CFF20CE30A0D3E670D584E8 /* TitleFieldCell.swift */,
-				3CFF28C62C2BD6007B342E92 /* EntryDetailTextFieldDelegate.swift */,
-				3CFF27BC235E8BFEBCB3B4A9 /* EntryDetailGestureRecognizerDelegate.swift */,
-				3CFF2E5B42E66E559B5244FD /* EntryDetailPickerDelegate.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -95,6 +91,15 @@
 				3CFF28F5AF647021CEA9652B /* last-time-at.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		828BD204230EC97000FA66C7 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				828BD205230EC99300FA66C7 /* Int+extensions.swift */,
+				828BD207230EC9A500FA66C7 /* String+extensions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,14 +197,13 @@
 				3CFF22F0C5ABB8744367DFF7 /* AppDelegate.swift in Sources */,
 				3CFF21F018EC2A5EC8C25509 /* EntryListViewController.swift in Sources */,
 				3CFF21CDB318F10B24D5CDBE /* EntryStore.swift in Sources */,
+				828BD206230EC99300FA66C7 /* Int+extensions.swift in Sources */,
+				828BD208230EC9A500FA66C7 /* String+extensions.swift in Sources */,
 				3CFF218990A5058D209EC4A4 /* Entry.swift in Sources */,
 				3CFF283462BAD8158955A6BE /* EntryDetailViewController.swift in Sources */,
 				3CFF262BA629AE7C22F9DA6A /* RatingFieldCell.swift in Sources */,
 				3CFF227D3664D287DE05C6BA /* SaveButtonCell.swift in Sources */,
 				3CFF2A9836FFB759F7D824C2 /* TitleFieldCell.swift in Sources */,
-				3CFF2A01632DCCB9BA66CC7A /* EntryDetailTextFieldDelegate.swift in Sources */,
-				3CFF2DCD972F0067B37CBB9E /* EntryDetailGestureRecognizerDelegate.swift in Sources */,
-				3CFF2ADE52C70FD839667EF4 /* EntryDetailPickerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,10 +60,17 @@ class EntryListViewController: UITableViewController, UIGestureRecognizerDelegat
     func touchUpInside(sender: UITapGestureRecognizer) {
         let cell = sender.view as! UITableViewCell
         if let row = tableView.indexPath(for: cell)?.row {
-            let detailViewController = EntryDetailViewController()
             let entry = entryStore.entries[row]
-            detailViewController.entry = entry
+            let detailViewController = EntryDetailViewController(entry: entry, row: row)
+            detailViewController.delegate = self
             navigationController?.pushViewController(detailViewController, animated: true)
         }
+    }
+}
+
+extension EntryListViewController: EntryDetailViewControllerDelegate {
+    func entryDetailViewController(newValue: Entry, for row: Int) {
+        entryStore.entries[row] = newValue
+        navigationController?.popViewController(animated: true)
     }
 }

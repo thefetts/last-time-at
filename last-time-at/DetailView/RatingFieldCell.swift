@@ -1,49 +1,28 @@
 import UIKit
 import SnapKit
 
-postfix operator ⭐
-
-extension Int {
-    postfix static func ⭐(this: Int) -> String {
-        return "⭐️" * this
-    }
+protocol RatingFieldCellDelegate: class {
+    func ratingFieldCell(didSelect: Int)
 }
 
-extension String {
-    static func *(input: String, times: Int) -> String {
-        var result = ""
-        for _ in 0..<times {
-            result += input
-        }
-        return result
-    }
-}
+class RatingFieldCell: UITableViewCell {
+    private let ratings = [5, 4, 3, 2, 1]
+    private let picker = UIPickerView()
+    weak var delegate: RatingFieldCellDelegate?
 
-class RatingFieldCell: UITableViewCell, UIPickerViewDataSource {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    var ratings: [Int]!
+        textLabel?.text = "Rating"
+        picker.dataSource = self
+        picker.delegate = self
 
-    init(data: [Int], rating: Int, delegate: UIPickerViewDelegate) {
-        super.init(style: .default, reuseIdentifier: "RatingCell")
-        ratings = data
+        addSubview(picker)
 
-        if let label = textLabel {
-            label.text = "Rating"
-
-            let picker = UIPickerView()
-            picker.delegate = delegate
-            picker.dataSource = self
-
-            let currentSelection = ratings.firstIndex(of: rating) ?? 0
-            picker.selectRow(currentSelection, inComponent: 0, animated: false)
-
-            addSubview(picker)
-
-            picker.snp.makeConstraints { (make) -> Void in
-                make.leading.equalToSuperview().offset(150)
-                make.trailing.equalToSuperview().offset(-8)
-                make.height.equalToSuperview()
-            }
+        picker.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(150)
+            make.trailing.equalToSuperview().offset(-8)
+            make.height.equalToSuperview()
         }
     }
 
@@ -51,11 +30,37 @@ class RatingFieldCell: UITableViewCell, UIPickerViewDataSource {
         super.init(coder: aDecoder)
     }
 
+    func pick(rating: Int) {
+        let currentSelection = ratings.firstIndex(of: rating) ?? 0
+        picker.selectRow(currentSelection, inComponent: 0, animated: false)
+    }
+}
+
+extension RatingFieldCell: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return ratings.count
+    }
+}
+
+extension RatingFieldCell: UIPickerViewDelegate {
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 48
+    }
+
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = view as? UILabel ?? UILabel()
+        label.text = ratings[row]⭐
+        label.textAlignment = .center
+        let hue = CGFloat(ratings.count - 1 - row) / CGFloat(ratings.count)
+        label.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        return label
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        delegate?.ratingFieldCell(didSelect: ratings[row])
     }
 }

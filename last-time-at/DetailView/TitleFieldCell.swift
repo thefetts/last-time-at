@@ -2,17 +2,19 @@ import UIKit
 import SnapKit
 
 class TitleFieldCell: UITableViewCell {
-    init(title: String, delegate: UITextFieldDelegate) {
+    let field: UITextField = {
+        let field = UITextField()
+        field.font = .systemFont(ofSize: 24)
+        field.textAlignment = .center
+        return field
+    }()
+
+    init() {
         super.init(style: .default, reuseIdentifier: "TitleCell")
 
         if let label = textLabel {
             label.text = "Title"
 
-            let field = UITextField()
-            field.font = .systemFont(ofSize: 24)
-            field.text = title
-            field.textAlignment = .center
-            field.delegate = delegate
             addSubview(field)
             field.snp.makeConstraints { (make) -> Void in
                 make.leading.equalToSuperview().offset(150)
@@ -23,6 +25,6 @@ class TitleFieldCell: UITableViewCell {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError()
     }
 }
